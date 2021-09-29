@@ -1,9 +1,8 @@
 package org.ssh.boot.api.aggregate;
 
-import org.ssh.boot.api.event.DomainEvent;
-import org.ssh.boot.api.event.OrderDomainEvent;
-
-import java.util.List;
+import org.ssh.boot.api.dto.OrderDTO;
+import org.ssh.boot.api.enums.TradeStatusEnum;
+import org.ssh.boot.api.event.ResultWithDomainEvents;
 
 /**
  * @author yzm
@@ -11,17 +10,23 @@ import java.util.List;
  */
 public class Order implements AggregateRoot {
 
+    private Long id;
+
+    private String totalAmount;
+
+    private TradeStatusEnum tradeStatus;
+
+    private String subject;
 
     /**
      * 发布领域事件的第一种方式 将事件作为聚合方法的返回值
      *
      * @return
      */
-    public static List<OrderDomainEvent> createOrder() {
+    public static ResultWithDomainEvents<Order> createOrder(OrderDTO dto) {
+
         return null;
     }
 
-    public void updateTradeStatus(){
 
-    }
 }
