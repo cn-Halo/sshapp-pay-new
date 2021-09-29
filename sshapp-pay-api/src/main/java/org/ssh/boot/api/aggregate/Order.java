@@ -1,6 +1,7 @@
 package org.ssh.boot.api.aggregate;
 
 import org.ssh.boot.api.event.DomainEvent;
+import org.ssh.boot.api.event.OrderDomainEvent;
 
 import java.util.List;
 
@@ -16,7 +17,11 @@ public class Order implements AggregateRoot {
      *
      * @return
      */
-    public static List<DomainEvent> createOrder() {
+    public static List<OrderDomainEvent> createOrder() {
         return null;
+    }
+
+    public void updateTradeStatus(){
+
     }
 }
