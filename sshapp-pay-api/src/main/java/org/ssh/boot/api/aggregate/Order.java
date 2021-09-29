@@ -1,5 +1,6 @@
 package org.ssh.boot.api.aggregate;
 
+import lombok.Data;
 import org.ssh.boot.api.dto.OrderDTO;
 import org.ssh.boot.api.enums.TradeStatusEnum;
 import org.ssh.boot.api.event.ResultWithDomainEvents;
@@ -8,9 +9,12 @@ import org.ssh.boot.api.event.ResultWithDomainEvents;
  * @author yzm
  * @date 2021/9/27 22:41
  */
+@Data
 public class Order implements AggregateRoot {
 
     private Long id;
+
+    private String outTradeNo;
 
     private String totalAmount;
 
@@ -24,8 +28,17 @@ public class Order implements AggregateRoot {
      * @return
      */
     public static ResultWithDomainEvents<Order> createOrder(OrderDTO dto) {
+        Order order = new Order();
+        order.setSubject(dto.getSubject());
+        order.setOutTradeNo(dto.getOutTradeNo());
+        order.setTotalAmount(dto.getTotalAmount());
 
         return null;
+    }
+
+    private static Order build() {
+        Order order = new Order();
+        return order;
     }
 
 
