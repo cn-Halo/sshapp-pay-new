@@ -9,5 +9,7 @@ import org.ssh.boot.api.aggregate.Order;
 public interface OrderRepository {
     Order findById(Long id);
 
+    Order findByOutTradeNo(String outTradeNo);
+
     Order save(Order order);
 }
