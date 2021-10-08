@@ -3,10 +3,12 @@ package org.ssh.boot.api.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.ssh.boot.api.aggregate.Order;
 import org.ssh.boot.api.dto.OrderCreateDTO;
+import org.ssh.boot.api.dto.OrderPaidDTO;
 import org.ssh.boot.api.event.DomainEventPublisher;
 import org.ssh.boot.api.event.OrderDomainEvent;
-import org.ssh.boot.api.publisher.OrderDomainEventPublisher;
 import org.ssh.boot.api.event.ResultWithDomainEvents;
+import org.ssh.boot.api.exception.OrderNotFoundException;
+import org.ssh.boot.api.publisher.OrderDomainEventPublisher;
 import org.ssh.boot.api.repository.OrderRepository;
 
 /**
@@ -31,5 +33,23 @@ public class OrderService {
         //创建saga。。。。。
         return order;
     }
+
+
+    public void payOrder(Long orderId) {
+        Order order = orderRepository.findById(orderId);
+        if (order == null)
+            throw new OrderNotFoundException(orderId + "");
+        //创建saga
+
+
+        //调用支付api
+
+        String tradeNo;
+        String gmtPayment;
+        order.paid(new OrderPaidDTO())
+
+
+    }
+
 
 }

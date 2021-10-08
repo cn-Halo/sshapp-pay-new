@@ -1,5 +1,6 @@
 package org.ssh.boot.api.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -10,6 +11,7 @@ import lombok.Data;
  * @author yzm
  */
 @Data
+@AllArgsConstructor
 public class OrderPaidDTO {
 
     private String tradeNo;

@@ -32,6 +32,12 @@ public class Order implements AggregateRoot {
      *
      * @return
      */
+    /**
+     * 订单被创建
+     *
+     * @param dto
+     * @return
+     */
     public static ResultWithDomainEvents<Order, OrderDomainEvent> createOrder(OrderCreateDTO dto) {
         PaymentInfo paymentInfo = new PaymentInfo();
         paymentInfo.setSubject(dto.getSubject());
@@ -46,15 +52,26 @@ public class Order implements AggregateRoot {
     }
 
 
+    /**
+     * 订单被关闭
+     *
+     * @return
+     */
     public ResultWithDomainEvents<Order, OrderDomainEvent> closed() {
-        if(TradeStatusEnum.){
-
+        if (!TradeStatusEnum.WAIT_BUYER_PAY.equals(this.tradeStatus)) {
+            throw new UnsupportedOperationException("订单状态不合法: " + tradeStatus);
         }
         this.tradeStatus = TradeStatusEnum.TRADE_CLOSED;
         List<OrderClosedEvent> events = Collections.singletonList(new OrderClosedEvent(this));
         return new ResultWithDomainEvents(this, events);
     }
 
+    /**
+     * 订单被支付
+     *
+     * @param dto
+     * @return
+     */
     public ResultWithDomainEvents<Order, OrderDomainEvent> paid(OrderPaidDTO dto) {
 
         this.paymentInfo.setGmtPayment(dto.getTradeNo());
@@ -65,6 +82,12 @@ public class Order implements AggregateRoot {
         return new ResultWithDomainEvents(this, events);
     }
 
+    /**
+     * 订单被退款
+     *
+     * @param dto
+     * @return
+     */
     public ResultWithDomainEvents<Order, OrderDomainEvent> refunded(OrderRefundDTO dto) {
         refundTradeStatusCheck();
         refundAmountCheck(dto.getRefundAmount());
