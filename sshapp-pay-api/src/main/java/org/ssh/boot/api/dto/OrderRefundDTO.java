@@ -1,14 +1,14 @@
-package org.ssh.boot.api.aggregate;
+package org.ssh.boot.api.dto;
 
 import lombok.Data;
-import org.ssh.boot.api.enums.TradeStatusEnum;
 
 /**
+ * Created on 2021/9/30.
+ *
  * @author yzm
- * @date 2021/9/29 22:01
  */
 @Data
-public class RefundInfo {
+public class OrderRefundDTO {
 
     private String outTradeNo;
 
@@ -21,8 +21,6 @@ public class RefundInfo {
     private String refundReason;
 
     private String gmtRefundPay;
-
-    private TradeStatusEnum tradeStatus;
 
 
 }

@@ -6,5 +6,18 @@ package org.ssh.boot.api.enums;
  */
 public enum TradeStatusEnum {
 
+
+    WAIT_BUYER_PAY,
+
+    TRADE_CLOSED,
+
+    TRADE_FAILED,
+
     TRADE_SUCCESS,
+
+    TRADE_REFUND,
+
+    ;
+
+
 }

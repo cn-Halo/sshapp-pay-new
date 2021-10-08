@@ -1,17 +1,19 @@
 package org.ssh.boot.api.event;
 
+import lombok.Data;
 import org.ssh.boot.api.aggregate.Order;
 
 /**
+ * Created on 2021/9/30.
+ *
  * @author yzm
- * @date 2021/9/27 21:57
  */
-public class OrderCreatedEvent implements OrderDomainEvent {
+@Data
+public class OrderPaidEvent implements OrderDomainEvent {
+
     private Order order;
 
-    public OrderCreatedEvent(Order order) {
+    public OrderPaidEvent(Order order) {
         this.order = order;
     }
-
-
 }

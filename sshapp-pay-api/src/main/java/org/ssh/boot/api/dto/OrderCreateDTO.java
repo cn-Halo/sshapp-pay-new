@@ -3,16 +3,15 @@ package org.ssh.boot.api.dto;
 import lombok.Data;
 
 /**
+ * Created on 2021/9/30.
+ *
  * @author yzm
- * @date 2021/9/29 22:31
  */
 @Data
-public class OrderDTO {
-
+public class OrderCreateDTO {
     private String outTradeNo;
 
-    private String totalAmount;
+    private String paymentAmount;
 
     private String subject;
-
 }
